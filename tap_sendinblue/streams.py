@@ -55,7 +55,7 @@ class CampaignsStream(SendinblueStream):
 class CampaignsReportStream(SendinblueStream):
     """Define custom stream."""
     name = "campaigns_report"
-    path = "emailCampaigns/{campaignId}"
+    path = "/emailCampaigns/{campaignId}"
     primary_keys = ["id"]
     replication_key = None
     records_jsonpath = "$.campaigns[*]"
