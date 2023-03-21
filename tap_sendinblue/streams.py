@@ -62,7 +62,6 @@ class CampaignsReportStream(SendinblueStream):
     schema = th.PropertiesList(
         th.Property("id", th.IntegerType),
         th.Property("name", th.StringType),
-        th.Property("statistics", th.StringType),
         th.Property("statistics",
                     th.ObjectType(
                         th.Property("listId", th.IntegerType),
