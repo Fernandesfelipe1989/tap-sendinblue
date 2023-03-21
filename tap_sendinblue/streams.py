@@ -48,7 +48,7 @@ class CampaignsStream(SendinblueStream):
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
         """Return a context dictionary for child streams."""
         return {
-            "list_id": record["id"],
+            "campaign_id": record["id"],
         }
 
 
@@ -58,11 +58,12 @@ class CampaignsReportStream(SendinblueStream):
     path = "/emailCampaigns/{campaignId}"
     primary_keys = ["id"]
     replication_key = None
-    records_jsonpath = "$.campaigns[*]"
+    records_jsonpath = "$.campaigns_report[*]"
+    parent_stream_type = CampaignsStream
     schema = th.PropertiesList(
         th.Property("id", th.IntegerType),
         th.Property("name", th.StringType),
-        th.Property("statistics",
+        th.Property("campaignStats",
                     th.ObjectType(
                         th.Property("listId", th.IntegerType),
                         th.Property("uniqueClicks", th.IntegerType),
@@ -73,17 +74,13 @@ class CampaignsReportStream(SendinblueStream):
                         th.Property("softBounces", th.IntegerType),
                         th.Property("hardBounces", th.IntegerType),
                         th.Property("uniqueViews", th.IntegerType),
-                        th.Property("hardBounces", th.IntegerType),
                         th.Property("trackableViews", th.IntegerType),
-                        th.Property("trackableViewsRate", th.IntegerType), # FLOAT
-                        th.Property("unsubscriptions", th.IntegerType),
-                        th.Property("estimatedViews", th.IntegerType),
-                        th.Property("deferred", th.IntegerType),
                         th.Property("unsubscriptions", th.IntegerType),
                         th.Property("viewed", th.IntegerType),
-                        th.Property("returnBounce",  th.IntegerType)),
+                        th.Property("deferred",  th.IntegerType)),
                     ),
     ).to_dict()
+
 
 
 class ListMembersStream(SendinblueStream):
