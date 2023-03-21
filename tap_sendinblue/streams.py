@@ -56,11 +56,11 @@ class CampaignsStream(SendinblueStream):
 """
 class CampaignsReportStream(SendinblueStream):
     """Define custom stream."""
-    name = "campaigns_report"
+    name = "campaignsreport"
     path = "/emailCampaigns/{campaign_id}"
     primary_keys = ["id"]
     replication_key = None
-    records_jsonpath = "$.campaigns_report[*]"
+    records_jsonpath = "$.report[*]"
     parent_stream_type = CampaignsStream
     schema = th.PropertiesList(
         th.Property("id", th.IntegerType),
