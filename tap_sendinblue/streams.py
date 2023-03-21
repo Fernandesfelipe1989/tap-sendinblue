@@ -51,7 +51,9 @@ class CampaignsStream(SendinblueStream):
             "campaign_id": record["id"],
         }
 
+"""
 
+"""
 class CampaignsReportStream(SendinblueStream):
     """Define custom stream."""
     name = "campaigns_report"
@@ -63,22 +65,29 @@ class CampaignsReportStream(SendinblueStream):
     schema = th.PropertiesList(
         th.Property("id", th.IntegerType),
         th.Property("name", th.StringType),
-        th.Property("campaignStats",
+        th.Property("statistics",
                     th.ObjectType(
-                        th.Property("listId", th.IntegerType),
-                        th.Property("uniqueClicks", th.IntegerType),
-                        th.Property("clickers", th.IntegerType),
-                        th.Property("complaints", th.IntegerType),
-                        th.Property("delivered", th.IntegerType),
-                        th.Property("sent", th.IntegerType),
-                        th.Property("softBounces", th.IntegerType),
-                        th.Property("hardBounces", th.IntegerType),
-                        th.Property("uniqueViews", th.IntegerType),
-                        th.Property("trackableViews", th.IntegerType),
-                        th.Property("unsubscriptions", th.IntegerType),
-                        th.Property("viewed", th.IntegerType),
-                        th.Property("deferred",  th.IntegerType)),
+                        th.Property("mirrorClick", th.IntegerType),
+                        th.Property("remaining", th.IntegerType),
+                        th.ObjectType("campaignStats",
+                            th.Property("listId", th.IntegerType),
+                            th.Property("uniqueClicks", th.IntegerType),
+                            th.Property("clickers", th.IntegerType),
+                            th.Property("complaints", th.IntegerType),
+                            th.Property("delivered", th.IntegerType),
+                            th.Property("sent", th.IntegerType),
+                            th.Property("softBounces", th.IntegerType),
+                            th.Property("hardBounces", th.IntegerType),
+                            th.Property("uniqueViews", th.IntegerType),
+                            th.Property("trackableViews", th.IntegerType),
+                            th.Property("unsubscriptions", th.IntegerType),
+                            th.Property("viewed", th.IntegerType),
+                            th.Property("deferred",  th.IntegerType)
+                            ),
+                        ),
                     ),
+        th.Property("scheduledAt", th.DateTimeType),
+        th.Property("sentDate", th.DateTimeType),
     ).to_dict()
 
 
