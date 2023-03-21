@@ -45,6 +45,47 @@ class CampaignsStream(SendinblueStream):
         th.Property("name", th.StringType),
     ).to_dict()
 
+    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+        """Return a context dictionary for child streams."""
+        return {
+            "list_id": record["id"],
+        }
+
+
+class CampaignsReportStream(SendinblueStream):
+    """Define custom stream."""
+    name = "campaigns_report"
+    path = "emailCampaigns/{campaignId}"
+    primary_keys = ["id"]
+    replication_key = None
+    records_jsonpath = "$.campaigns[*]"
+    schema = th.PropertiesList(
+        th.Property("id", th.IntegerType),
+        th.Property("name", th.StringType),
+        th.Property("statistics", th.StringType),
+        th.Property("statistics",
+                    th.ObjectType(
+                        th.Property("listId", th.IntegerType),
+                        th.Property("uniqueClicks", th.IntegerType),
+                        th.Property("clickers", th.IntegerType),
+                        th.Property("complaints", th.IntegerType),
+                        th.Property("delivered", th.IntegerType),
+                        th.Property("sent", th.IntegerType),
+                        th.Property("softBounces", th.IntegerType),
+                        th.Property("hardBounces", th.IntegerType),
+                        th.Property("uniqueViews", th.IntegerType),
+                        th.Property("hardBounces", th.IntegerType),
+                        th.Property("trackableViews", th.IntegerType),
+                        th.Property("trackableViewsRate", th.IntegerType), # FLOAT
+                        th.Property("unsubscriptions", th.IntegerType),
+                        th.Property("estimatedViews", th.IntegerType),
+                        th.Property("deferred", th.IntegerType),
+                        th.Property("unsubscriptions", th.IntegerType),
+                        th.Property("viewed", th.IntegerType),
+                        th.Property("returnBounce",  th.IntegerType)),
+                    ),
+    ).to_dict()
+
 
 class ListMembersStream(SendinblueStream):
     """Define custom stream."""
@@ -63,7 +104,7 @@ class ListMembersStream(SendinblueStream):
         th.Property("createdAt", th.DateTimeType),
         th.Property("modifiedAt", th.DateTimeType),
         th.Property("attributes", th.ObjectType(
-                th.Property("value", th.StringType), th.Property("label", th.StringType)
-            ),
+            th.Property("value", th.StringType), th.Property("label", th.StringType)
         ),
+                    ),
     ).to_dict()
