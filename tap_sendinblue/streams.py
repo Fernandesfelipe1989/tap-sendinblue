@@ -1,7 +1,7 @@
 """Stream type classes for tap-sendinblue."""
 
 from pathlib import Path
-from typing import Any, Dict, Optional, Union, List, Iterable
+from typing import Optional
 
 from singer_sdk import typing as th  # JSON Schema typing helpers
 
@@ -47,7 +47,7 @@ class CampaignsStream(SendinblueStream):
         th.Property("createdAt", th.DateTimeType),
         th.Property("modifiedAt", th.DateTimeType),
         th.Property("sentDate", th.DateTimeType),
-        th.Property("shareLink", th.URIType),
+        th.Property("shareLink", th.StringType),
         th.Property("statistics",
                     th.ObjectType(
                         th.Property("mirrorClick", th.IntegerType),
