@@ -135,14 +135,14 @@ class SmtpEventsStream(SendinblueStream):
         th.Property("events",
                     th.ArrayType(
                         th.ObjectType(
-                            th.Property("email", th.EmailType),
+                            th.Property("email", th.StringType),
                             th.Property("date", th.DateTimeType),
                             th.Property("subject", th.StringType),
                             th.Property("messageId", th.StringType),
                             th.Property("event", th.StringType),
                             th.Property("tag", th.StringType),
                             th.Property("ip", th.StringType),
-                            th.Property("from", th.EmailType),
+                            th.Property("from", th.StringType),
                             th.Property("templateId", th.IntegerType),
                             ),
                         )
