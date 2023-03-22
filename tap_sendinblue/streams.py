@@ -53,27 +53,25 @@ class CampaignsStream(SendinblueStream):
                         th.Property("mirrorClick", th.IntegerType),
                         th.Property("remaining", th.IntegerType),
                         th.Property("globalStats",
-                                    th.ArrayType(
-                                        th.ObjectType(
-                                            th.Property("uniqueClicks", th.IntegerType),
-                                            th.Property("clickers", th.IntegerType),
-                                            th.Property("complaints", th.IntegerType),
-                                            th.Property("delivered", th.IntegerType),
-                                            th.Property("sent", th.IntegerType),
-                                            th.Property("softBounces", th.IntegerType),
-                                            th.Property("hardBounces", th.IntegerType),
-                                            th.Property("uniqueViews", th.IntegerType),
-                                            th.Property(
-                                                "unsubscriptions", th.IntegerType
-                                                ),
-                                            th.Property("viewed", th.IntegerType),
-                                            th.Property("trackableViews", th.IntegerType),
-                                            th.Property(
-                                                "trackableViewsRate", th.NumberType
-                                                ),
-                                            th.Property("estimatedViews", th.IntegerType),
-                                            ),
-                                        )
+                                    th.ObjectType(
+                                        th.Property("uniqueClicks", th.IntegerType),
+                                        th.Property("clickers", th.IntegerType),
+                                        th.Property("complaints", th.IntegerType),
+                                        th.Property("delivered", th.IntegerType),
+                                        th.Property("sent", th.IntegerType),
+                                        th.Property("softBounces", th.IntegerType),
+                                        th.Property("hardBounces", th.IntegerType),
+                                        th.Property("uniqueViews", th.IntegerType),
+                                        th.Property(
+                                            "unsubscriptions", th.IntegerType
+                                        ),
+                                        th.Property("viewed", th.IntegerType),
+                                        th.Property("trackableViews", th.IntegerType),
+                                        th.Property(
+                                            "trackableViewsRate", th.NumberType
+                                        ),
+                                        th.Property("estimatedViews", th.IntegerType),
+                                    ),
                                     ),
                         th.Property("campaignStats",
                                     th.ArrayType(
@@ -90,13 +88,13 @@ class CampaignsStream(SendinblueStream):
                                             th.Property("trackableViews", th.IntegerType),
                                             th.Property(
                                                 "unsubscriptions", th.IntegerType
-                                                ),
+                                            ),
                                             th.Property("viewed", th.IntegerType),
                                             th.Property("deferred", th.IntegerType),
-                                            ),
-                                        )
+                                        ),
+                                    )
                                     ),
-                        ),
+                    ),
                     ),
         th.Property("subject", th.StringType),
     ).to_dict()
@@ -110,10 +108,10 @@ class SmtpAggregatedReportStream(SendinblueStream):
     records_jsonpath = "$.smtpreport[*]"
     schema = th.PropertiesList(
         th.Property("id", th.IntegerType),
-        th.Property("requests",  th.IntegerType),
-        th.Property("delivered",  th.IntegerType),
-        th.Property("hardBounces",  th.IntegerType),
-        th.Property("softBounces",  th.IntegerType),
+        th.Property("requests", th.IntegerType),
+        th.Property("delivered", th.IntegerType),
+        th.Property("hardBounces", th.IntegerType),
+        th.Property("softBounces", th.IntegerType),
         th.Property("clicks", th.IntegerType),
         th.Property("uniqueClicks", th.IntegerType),
         th.Property("opens", th.IntegerType),
@@ -144,8 +142,8 @@ class SmtpEventsStream(SendinblueStream):
                             th.Property("ip", th.StringType),
                             th.Property("from", th.StringType),
                             th.Property("templateId", th.IntegerType),
-                            ),
-                        )
+                        ),
+                    )
                     ),
     ).to_dict()
 
