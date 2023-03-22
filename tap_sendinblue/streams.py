@@ -74,26 +74,6 @@ class CampaignsStream(SendinblueStream):
                     ),
     ).to_dict()
 
-    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for child streams."""
-        return {
-            "campaign_id": record["id"],
-        }
-
-
-class CampaignsReportStream(SendinblueStream):
-    """Define custom stream."""
-    name = "campaignsreport"
-    path = "/emailCampaigns/{campaign_id}"
-    primary_keys = ["id"]
-    replication_key = None
-    records_jsonpath = "$.report[*]"
-    parent_stream_type = CampaignsStream
-    schema = th.PropertiesList(
-        th.Property("id", th.IntegerType),
-        th.Property("name", th.StringType),
-    ).to_dict()
-
 
 class ListMembersStream(SendinblueStream):
     """Define custom stream."""
