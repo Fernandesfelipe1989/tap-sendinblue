@@ -11,8 +11,6 @@ from tap_sendinblue.streams import (
     ListsStream,
     CampaignsStream,
     ListMembersStream,
-    SmtpAggregatedReportStream,
-    SmtpEventsStream
 )
 
 
@@ -20,8 +18,6 @@ STREAM_TYPES = [
     ListsStream,
     CampaignsStream,
     ListMembersStream,
-    SmtpAggregatedReportStream,
-    SmtpEventsStream
 ]
 
 
