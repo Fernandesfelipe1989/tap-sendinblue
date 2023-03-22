@@ -3,18 +3,19 @@
 from typing import List
 
 from singer_sdk import Tap, Stream
-from singer_sdk import typing as th  # JSON schema typing helpers
-
+from singer_sdk import typing as th
 
 from tap_sendinblue.streams import (
     SendinblueStream,
     ListsStream,
     CampaignsStream,
     ListMembersStream,
+    SmtpAggregatedReportStream,
+    SmtpEventsStream,
 )
 
-
-STREAM_TYPES = [ListsStream, CampaignsStream, ListMembersStream]
+STREAM_TYPES = [ListsStream, CampaignsStream, ListMembersStream,
+                SmtpAggregatedReportStream, SmtpEventsStream]
 
 
 class TapSendinblue(Tap):
