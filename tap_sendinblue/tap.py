@@ -11,10 +11,18 @@ from tap_sendinblue.streams import (
     ListsStream,
     CampaignsStream,
     ListMembersStream,
+    SmtpAggregatedReportStream,
+    SmtpEventsStream
 )
 
 
-STREAM_TYPES = [ListsStream, CampaignsStream, ListMembersStream]
+STREAM_TYPES = [
+    ListsStream,
+    CampaignsStream,
+    ListMembersStream,
+    SmtpAggregatedReportStream,
+    SmtpEventsStream
+]
 
 
 class TapSendinblue(Tap):
