@@ -50,24 +50,25 @@ class CampaignsStream(SendinblueStream):
                     th.ObjectType(
                         th.Property("mirrorClick", th.IntegerType),
                         th.Property("remaining", th.IntegerType),
-                        th.ObjectType("campaignStats",
-                                      th.Property("listId", th.IntegerType),
-                                      th.Property("uniqueClicks", th.IntegerType),
-                                      th.Property("clickers", th.IntegerType),
-                                      th.Property("complaints", th.IntegerType),
-                                      th.Property("delivered", th.IntegerType),
-                                      th.Property("sent", th.IntegerType),
-                                      th.Property("softBounces", th.IntegerType),
-                                      th.Property("hardBounces", th.IntegerType),
-                                      th.Property("uniqueViews", th.IntegerType),
-                                      th.Property("trackableViews", th.IntegerType),
-                                      th.Property("unsubscriptions", th.IntegerType),
-                                      th.Property("viewed", th.IntegerType),
-                                      th.Property("deferred", th.IntegerType)
-                                      ),
+                        th.Property("campaignStats",
+                                    th.ObjectType(
+                                        th.Property("listId", th.IntegerType),
+                                        th.Property("uniqueClicks", th.IntegerType),
+                                        th.Property("clickers", th.IntegerType),
+                                        th.Property("complaints", th.IntegerType),
+                                        th.Property("delivered", th.IntegerType),
+                                        th.Property("sent", th.IntegerType),
+                                        th.Property("softBounces", th.IntegerType),
+                                        th.Property("hardBounces", th.IntegerType),
+                                        th.Property("uniqueViews", th.IntegerType),
+                                        th.Property("trackableViews", th.IntegerType),
+                                        th.Property("unsubscriptions", th.IntegerType),
+                                        th.Property("viewed", th.IntegerType),
+                                        th.Property("deferred", th.IntegerType),
+                                        ),
+                                    ),
+                        ),
                     ),
-                    ),
-
     ).to_dict()
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
