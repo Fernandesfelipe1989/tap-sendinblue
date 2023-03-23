@@ -51,6 +51,7 @@ class ListMembersStream(SendinblueStream):
 class SmtpAggregatedReportStream(SendinblueStream):
     name = "smtp_report"
     path = "/smtp/statistics/aggregatedReport"
+    primary_keys = ["id"]
     replication_key = None
     records_jsonpath = "smtp_report.[*]"
     schema = schemas.smtp_report
@@ -60,5 +61,6 @@ class SmtpEventsStream(SendinblueStream):
     name = "smtp_events"
     path = "/smtp/statistics/events"
     replication_key = None
+    primary_keys = ["messageId"]
     records_jsonpath = "smtp_events.[*]"
     schema = schemas.smtp_events
