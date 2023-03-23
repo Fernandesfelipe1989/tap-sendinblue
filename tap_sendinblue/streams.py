@@ -53,7 +53,6 @@ class SmtpAggregatedReportStream(SendinblueStream):
     path = "/smtp/statistics/aggregatedReport"
     primary_keys = ["id"]
     replication_key = None
-    records_jsonpath = "smtp_report.[*]"
     schema = schemas.smtp_report
 
 
@@ -62,5 +61,5 @@ class SmtpEventsStream(SendinblueStream):
     path = "/smtp/statistics/events"
     replication_key = None
     primary_keys = ["messageId"]
-    records_jsonpath = "smtp_events.[*]"
+    records_jsonpath = "events.[*]"
     schema = schemas.smtp_events
